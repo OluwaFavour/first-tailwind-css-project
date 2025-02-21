@@ -1,42 +1,98 @@
-@import 'tailwindcss';
-
-@theme {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-}
-
-/*
-  The default border color has changed to `currentColor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
-
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
-*/
-@layer base {
-  *,
-  ::after,
-  ::before,
-  ::backdrop,
-  ::file-selector-button {
-    border-color: var(--color-gray-200, currentColor);
-  }
-}
+@import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* BACKGROUND IMAGES */
+  --bg-hero: url("/images/collection-background.svg");
+  --bg-card: url("/images/thumbnail-background.svg");
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@theme {
+  /* COLORS */
+  --color-primary: #eceeff;
+  --color-coral-red: #ff6452;
+  --color-slate-gray: #6d6d6d;
+  --color-pale-blue: #f5f6ff;
+  --color-white-400: rgba(255, 255, 255, 0.8);
+
+  /* TYPOGRAPHY */
+  /* FONTS */
+  --font-montserrat: Montserrat, sans-serif;
+  --font-palanquin: Palanquin, sans-serif;
+
+  /* FONT SIZES */
+  --text-xs: 0.75rem;
+  --text-xs--line-height: 1rem;
+  --text-sm: 0.875rem;
+  --text-sm--line-height: 1.25rem;
+  --text-base: 1rem;
+  --text-base--line-height: 1.21875rem;
+  --text-lg: 1.125rem;
+  --text-lg--line-height: 1.37125;
+  --text-xl: 1.25rem;
+  --text-xl--line-height: 1.52375rem;
+  --text-2xl: 1.5rem;
+  --text-2xl--line-height: 1.82875rem;
+  --text-3xl: 1.75rem;
+  --text-3xl--line-height: 3.125rem;
+  --text-4xl: 3rem;
+  --text-4xl--line-height: 3.625rem;
+  --text-8xl: 6rem;
+  --text-8xl--line-height: 6.625rem;
+
+  /* BOX SHADOWS */
+  --shadow-3xl: 0 10px 40px rgba(0, 0, 0, 0.1);
+
+  /* BREAKPOINTS */
+  --breakpoint-wide: 1440px;
+}
+
+@layer components {
+  .max-container {
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+
+  .input {
+    @apply sm:flex-1 max-sm:w-full text-base leading-normal text-slate-gray pl-5 max-sm:p-5 outline-none max-sm:border-1 max-sm:border-slate-gray max-sm:rounded-full;
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+@utility bg-hero {
+  background-image: var(--bg-hero);
+}
+
+@utility bg-card {
+  background-image: var(--bg-card);
+}
+
+@utility padding {
+  @apply sm:px-16 px-8 sm:py-24 py-12;
+}
+
+@utility padding-x {
+  @apply sm:px-16 px-8;
+}
+
+@utility padding-y {
+  @apply sm:py-24 py-12;
+}
+
+@utility padding-l {
+  @apply sm:pl-16 pl-8;
+}
+
+@utility padding-r {
+  @apply sm:pr-16 pr-8;
+}
+
+@utility padding-t {
+  @apply sm:pt-24 pt-12;
+}
+
+@utility padding-b {
+  @apply sm:pb-24 pb-12;
+}
+
+@utility info-text {
+  @apply font-montserrat text-slate-gray text-lg leading-7;
 }
