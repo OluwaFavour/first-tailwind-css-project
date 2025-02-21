@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { footerLogo } from "../../../public/images";
 import { footerLinks, socialMedia } from "../constants";
 import { copyrightSign } from "../../../public/icons";
@@ -41,7 +42,7 @@ const Footer = () => {
                     key={index}
                     className="mt-3 font-montserrat text-base leading-normal text-white-400 hover:text-slate-gray"
                   >
-                    <a href={item.link}>{item.name}</a>
+                    <Link href={item.link}>{item.name}</Link>
                   </li>
                 ))}
               </ul>
